@@ -6,43 +6,6 @@ function scrollToElement(elementId) {
     }
 }
 
-function updateUserJobTitleSuggestions() {
-    const userJobTitleInput = document.getElementById("userJobTitle");
-    const userJobTitleOptions = document.getElementById("userJobTitleOptions");
-
-    const userInput = userJobTitleInput.value.toLowerCase();
-    const filteredTypes = userJobTitles.filter((type) => type.toLowerCase().startsWith(userInput));
-
-    const datalistOptions = filteredTypes.map((type) => `<option value="${type}">${type}</option>`).join("");
-
-    userJobTitleOptions.innerHTML = datalistOptions;
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    const userJobTitleInput = document.getElementById("userJobTitle");
-
-    const userJobTitleOptions = document.createElement("datalist");
-    userJobTitleOptions.setAttribute("id", "userJobTitleOptions");
-
-    document.body.appendChild(userJobTitleOptions);
-
-    userJobTitleInput.setAttribute("list", "userJobTitleOptions");
-
-    userJobTitleInput.addEventListener("input", updateUserJobTitleSuggestions);
-
-    document.getElementById("CalculateQuote").addEventListener("click", function (event) {
-        event.preventDefault();
-        const userInput = userJobTitleInput.value.trim();
-        const isValidType = userJobTitle.includes(userInput);
-        if (!isValidType) {
-            alert("Please select a valid job title from the dropdown list.");
-            document.getElementById("QuoteResults").style.display = "none";
-            document.getElementById("ExtraHelp").style.display = "none";
-            return;
-        }
-        validatePostcodeAndCalculateQuote();
-    });
-});
 
 
 function updateCompanyTypeSuggestions() {
@@ -90,7 +53,7 @@ function validatePostcodeAndCalculateQuote() {
     if (restrictedPostcodes.includes(postcodeInput)) {
         document.getElementById("QuoteResults").style.display = "none";
         alert("Sorry, we do not provide services in this area. Please contact us for more information.");
-        return; 
+        return;
     }
 
     const isValidPostcode = /^([A-Z]{1,2}\d{1,2}[A-Z]?)\s*(\d[A-Z]{2})$/.test(postcodeInput);
@@ -100,39 +63,25 @@ function validatePostcodeAndCalculateQuote() {
         return;
     }
 
-    const userPhoneInput = document.getElementById("userPhone").value.trim();
-    const phoneRegex = /^(?:(?:\+44)|0)(\d{4})(\d{6})$/;
-    const isValidPhone = phoneRegex.test(userPhoneInput);
-    if (!isValidPhone) {
-        alert("Invalid phone number format. Please enter a valid UK phone number.");
-        return;
-    }
-
-    const userEmailInput = document.getElementById("userEmail").value.trim();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const isValidEmail = emailRegex.test(userEmailInput);
-    if (!isValidEmail) {
-        alert("Invalid email format. Please enter a valid email address.");
-        return;
-    }
-
     calculateQuote();
 }
 
+var goldMonthlyQuote;
+var silverMonthlyQuote;
+var bronzeMonthlyQuote;
+var goldAnnualQuote;
+var silverAnnualQuote;
+var bronzeAnnualQuote;
 
 function calculateQuote() {
 
-    var userName = document.getElementById("userName").value;
-    var userEmail = document.getElementById("userEmail").value;
-    var userPhone = parseInt(document.getElementById("userPhone").value);
-    var userJobTitle = document.getElementById("userJobTitle").value;
     var companyName = document.getElementById("companyName").value;
     var companyPostcode = document.getElementById("companyPostcode").value;
     var companyType = document.getElementById("companyType").value;
     var numEmployees = parseInt(document.getElementById("numEmployees").value);
 
 
-    if (!companyName || !companyPostcode || !companyType || isNaN(numEmployees) || !userName || !userEmail || isNaN(userPhone) || !userJobTitle) {
+    if (!companyName || !companyPostcode || !companyType || isNaN(numEmployees) ) {
         alert("Please fill in all fields with valid information.");
 
     }
@@ -144,47 +93,41 @@ function calculateQuote() {
         document.body.style.overflow = "auto";
     }
 
-    var goldMonthlyQuote;
-    var silverMonthlyQuote;
-    var bronzeMonthlyQuote;
-    var goldAnnualQuote;
-    var silverAnnualQuote;
-    var bronzeAnnualQuote;
 
     if (numEmployees > 0 && numEmployees <= 75) {
-        goldMonthlyQuote = "294.44 GBP";
-        goldAnnualQuote = "3249 GBP";
-        silverMonthlyQuote = "137.30 GBP";
-        silverAnnualQuote = "1515 GBP";
-        bronzeMonthlyQuote = "67.97 GBP";
-        bronzeAnnualQuote = "750 GBP";
+        goldMonthlyQuote = '\u00A3' + "294.44";
+        goldAnnualQuote = '\u00A3' + "3249";
+        silverMonthlyQuote = '\u00A3' + "137.30";
+        silverAnnualQuote = '\u00A3' + "1515";
+        bronzeMonthlyQuote = '\u00A3' + "67.97";
+        bronzeAnnualQuote = '\u00A3' + "750";
         document.getElementById("AltQuoteResults").style.display = "none";
 
     } else if (numEmployees > 75 && numEmployees <= 150) {
-        goldMonthlyQuote = "345.64 GBP";
-        goldAnnualQuote = "3814 GBP";
-        silverMonthlyQuote = "193.03 GBP";
-        silverAnnualQuote = "2130 GBP";
-        bronzeMonthlyQuote = "95.16 GBP";
-        bronzeAnnualQuote = "1050 GBP";
+        goldMonthlyQuote = '\u00A3' + "345.64";
+        goldAnnualQuote = '\u00A3' + "3814";
+        silverMonthlyQuote = '\u00A3' + "193.03";
+        silverAnnualQuote = '\u00A3' + "2130";
+        bronzeMonthlyQuote = '\u00A3' + "95.16";
+        bronzeAnnualQuote = '\u00A3' + "1050";
         document.getElementById("AltQuoteResults").style.display = "none";
 
     } else if (numEmployees > 150 && numEmployees <= 250) {
-        goldMonthlyQuote = "368.30 GBP";
-        goldAnnualQuote = "4064 GBP";
-        silverMonthlyQuote = "215.69 GBP";
-        silverAnnualQuote = "2380 GBP";
-        bronzeMonthlyQuote = "110.11 GBP";
-        bronzeAnnualQuote = "1215 GBP";
+        goldMonthlyQuote = '\u00A3' + "368.30";
+        goldAnnualQuote = '\u00A3' + "4064";
+        silverMonthlyQuote = '\u00A3' + "215.69";
+        silverAnnualQuote = '\u00A3' + "2380";
+        bronzeMonthlyQuote = '\u00A3' + "110.11";
+        bronzeAnnualQuote =  '\u00A3' + "1215";
         document.getElementById("AltQuoteResults").style.display = "none";
 
     } else if (numEmployees > 250 && numEmployees <= 500) {
-        goldMonthlyQuote = "423.58 GBP";
-        goldAnnualQuote = "4674 GBP";
-        silverMonthlyQuote = "270.97 GBP";
-        silverAnnualQuote = "2990 GBP";
-        bronzeMonthlyQuote = "126.88 GBP";
-        bronzeAnnualQuote = "1400 GBP";
+        goldMonthlyQuote = '\u00A3' + "423.58";
+        goldAnnualQuote = '\u00A3' + "4674";
+        silverMonthlyQuote = '\u00A3' + "270.97";
+        silverAnnualQuote = '\u00A3' + "2990";
+        bronzeMonthlyQuote = '\u00A3' + "126.88";
+        bronzeAnnualQuote = '\u00A3' + "1400";
         document.getElementById("AltQuoteResults").style.display = "none";
 
     } else if (numEmployees > 500) {
@@ -203,7 +146,7 @@ function calculateQuote() {
 
 }
 
-function GOLDSelectButton(){
+function GOLDSelectButton() {
     document.getElementById("GOLDConfirm").style.display = "block";
     document.getElementById("SILVERConfirm").style.display = "none";
     document.getElementById("BRONZEConfirm").style.display = "none";
@@ -227,7 +170,7 @@ function GOLDSelectButton(){
 
 
 }
-function SILVERSelectButton(){
+function SILVERSelectButton() {
 
     document.getElementById("SILVERConfirm").style.display = "block";
     document.getElementById("GOLDConfirm").style.display = "none";
@@ -251,7 +194,7 @@ function SILVERSelectButton(){
     document.getElementById("BRONZE").style.color = "black";
 
 }
-function BRONZESelectButton(){
+function BRONZESelectButton() {
     document.getElementById("BRONZEConfirm").style.display = "block";
     document.getElementById("SILVERConfirm").style.display = "none";
     document.getElementById("GOLDConfirm").style.display = "none";
@@ -275,7 +218,7 @@ function BRONZESelectButton(){
 
 }
 
-function Edit(){
+function Edit() {
     document.getElementById("CalculateQuote").style.display = "block";
 
     document.getElementById("BRONZEConfirm").style.display = "none";
@@ -298,9 +241,15 @@ function Edit(){
 
 }
 
-function Confirm() {
+function Confirm(service) {
     document.getElementById("QuoteResults").style.display = "none";
     document.getElementById("ConfirmationPage").style.display = "block";
+    document.getElementById("FcompanyName").innerText = "Company Name: " + document.getElementById("companyName").value;
+    document.getElementById("FcompanyPostcode").innerText = "Company Postcode: " + document.getElementById("companyPostcode").value;
+    document.getElementById("FcompanyType").innerText = "Company Type: " + document.getElementById("companyType").value;
+    document.getElementById("FnumEmployees").innerText = "Number of Employees: " + document.getElementById("numEmployees").value;
+    document.getElementById("ChosenService").innerText = "Chosen service level: " + service;
+    
     document.getElementById("EXIT").style.display = "block";
 
     document.getElementById("companyName").style.display = "none";
@@ -308,22 +257,26 @@ function Confirm() {
     document.getElementById("companyType").style.display = "none";
     document.getElementById("numEmployees").style.display = "none";
     document.getElementById("CalculateQuote").style.display = "none";
-
-    
+    if (service == 'GOLD') {
+        document.getElementById("MonthlyQuotes").innerText = "Monthly Quote:  " + '\u00A3' + goldMonthlyQuote;
+        document.getElementById("AnnualQuotes").innerText = "Annual Quote:  " + '\u00A3' + goldAnnualQuote;
+    }
+    else if (service == 'SILVER') {
+        document.getElementById("MonthlyQuotes").innerText = "Monthly Quote: " + '\u00A3' + silverMonthlyQuote;
+        document.getElementById("AnnualQuotes").innerText = "Annual Quote: " + '\u00A3' + silverAnnualQuote;
+    }
+    else if (service == 'BRONZE') {
+        document.getElementById("MonthlyQuotes").innerText = "Monthly Quote:  " + '\u00A3' + bronzeMonthlyQuote;
+        document.getElementById("AnnualQuotes").innerText = "Annual Quote:  " + '\u00A3' + bronzeAnnualQuote;
+    }
 }
-
 function Exit() {
     window.location.reload()
 }
 
 
-const restrictedPostcodes = ["AB12", "CD34", "EF56"]; 
+const restrictedPostcodes = ["AB12", "CD34", "EF56"];
 
-const userJobTitles = [
-    "CEO",
-    "CFO",
-    "Software Developer"
-    ]
 
 const companyTypes = [
     "Abattoir",

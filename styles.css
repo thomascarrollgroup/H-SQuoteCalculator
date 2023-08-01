@@ -1,15 +1,17 @@
-﻿/* Updated CSS with changes for scrollable content */
+﻿﻿ /* Updated CSS with changes for scrollable content */
+*{
+    font-family: Arial;
+}
 
 body {
     font-family: Arial;
     margin: 0;
     padding: 0;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 h1 {
     text-align: center;
-
 }
 
 #GOLDConfirm, #SILVERConfirm, #BRONZEConfirm, #GOLDEdit, #SILVEREdit, #BRONZEEdit {
@@ -20,14 +22,11 @@ h1 {
 #GOLDSelect, #SILVERSelect, #BRONZESelect {
     margin: 0 auto;
 }
+
 #companyName,
 #companyPostcode,
 #companyType,
-#numEmployees,
-#userName,
-#userEmail,
-#userJobTitle,
-#userPhone {
+#numEmployees{
     height: 50px;
     width: 500px;
     font-size: 18px;
@@ -39,7 +38,7 @@ h1 {
     display: block;
     margin: 0 auto;
 }
- 
+
 
 #CalculateQuote {
     display: block;
@@ -91,7 +90,7 @@ h1 {
 #ConfirmationPage {
     padding: 20px;
     text-align: center;
-    display:none;
+    display: none;
 }
 
 #EXIT {
