@@ -258,16 +258,16 @@ function Confirm(service) {
     document.getElementById("numEmployees").style.display = "none";
     document.getElementById("CalculateQuote").style.display = "none";
     if (service == 'GOLD') {
-        document.getElementById("MonthlyQuotes").innerText = "Monthly Quote:  " + '\u00A3' + goldMonthlyQuote;
-        document.getElementById("AnnualQuotes").innerText = "Annual Quote:  " + '\u00A3' + goldAnnualQuote;
+        document.getElementById("MonthlyQuotes").innerText = "Monthly Quote:  " + goldMonthlyQuote;
+        document.getElementById("AnnualQuotes").innerText = "Annual Quote:  " + goldAnnualQuote;
     }
     else if (service == 'SILVER') {
-        document.getElementById("MonthlyQuotes").innerText = "Monthly Quote: " + '\u00A3' + silverMonthlyQuote;
-        document.getElementById("AnnualQuotes").innerText = "Annual Quote: " + '\u00A3' + silverAnnualQuote;
+        document.getElementById("MonthlyQuotes").innerText = "Monthly Quote: " + silverMonthlyQuote;
+        document.getElementById("AnnualQuotes").innerText = "Annual Quote: " + silverAnnualQuote;
     }
     else if (service == 'BRONZE') {
-        document.getElementById("MonthlyQuotes").innerText = "Monthly Quote:  " + '\u00A3' + bronzeMonthlyQuote;
-        document.getElementById("AnnualQuotes").innerText = "Annual Quote:  " + '\u00A3' + bronzeAnnualQuote;
+        document.getElementById("MonthlyQuotes").innerText = "Monthly Quote:  " + bronzeMonthlyQuote;
+        document.getElementById("AnnualQuotes").innerText = "Annual Quote:  " + bronzeAnnualQuote;
     }
 }
 function Exit() {
