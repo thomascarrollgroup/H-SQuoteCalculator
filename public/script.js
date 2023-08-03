@@ -49,21 +49,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function validatePostcodeAndCalculateQuote() {
     const postcodeInput = document.getElementById("companyPostcode").value.trim().toUpperCase();
+    const companyTypeInput = document.getElementById("companyType").value.trim().toLowerCase();
 
-    if (restrictedPostcodes.includes(postcodeInput)) {
+    const isCompanyTypeRestricted = restrictedCompanyTypes.includes(companyTypeInput);
+    const isPostcodeRestricted = restrictedPostcodes.includes(postcodeInput);
+
+    // If both company type and postcode are restricted
+    if (isCompanyTypeRestricted && isPostcodeRestricted) {
+        document.getElementById("RestrictedPostcode").style.display = "block";
+        document.getElementById("RestrictedIndustry").style.display = "block";
         document.getElementById("QuoteResults").style.display = "none";
-        alert("Sorry, we do not provide services in this area. Please contact us for more information.");
         return;
     }
 
+    // If only company type is restricted
+    if (isCompanyTypeRestricted) {
+        document.getElementById("RestrictedIndustry").style.display = "block";
+        document.getElementById("QuoteResults").style.display = "none";
+    } else {
+        document.getElementById("RestrictedIndustry").style.display = "none";
+    }
+
+    // If only postcode is restricted
+    if (isPostcodeRestricted) {
+        document.getElementById("QuoteResults").style.display = "none";
+        document.getElementById("RestrictedPostcode").style.display = "block";
+    } else {
+        document.getElementById("RestrictedPostcode").style.display = "none";
+    }
+
+    // Check if the entered postcode is valid
     const isValidPostcode = /^([A-Z]{1,2}\d{1,2}[A-Z]?)\s*(\d[A-Z]{2})$/.test(postcodeInput);
-    if (!isValidPostcode || restrictedPostcodes.includes(postcodeInput)) {
+    if (!isValidPostcode) {
         document.getElementById("QuoteResults").style.display = "none";
-        alert("Invalid or restricted postcode. Please enter a valid postcode.");
+        alert('Please enter a valid post code. For example: (AB12 C34)');
         return;
     }
 
-    calculateQuote();
+    // If both company type and postcode are valid
+    if (!isCompanyTypeRestricted && !isPostcodeRestricted) {
+        calculateQuote();
+    }
 }
 
 var goldMonthlyQuote;
@@ -275,9 +301,11 @@ function Exit() {
 }
 
 
-const restrictedPostcodes = ["AB12", "CD34", "EF56"];
+const restrictedPostcodes = ["CF23 2TR"]; //  add here
+const restrictedCompanyTypes = ["accountancy", "abattoir"]; // add here
 
 
+// edit or add here
 const companyTypes = [
     "Abattoir",
     "Access Control & Door Entry System Installation, Service & Repair",

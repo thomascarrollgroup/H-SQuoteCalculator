@@ -106,6 +106,18 @@ h1 {
     font-weight: bolder;
     text-align: center;
 }
+#RestrictedPostcode {
+    display: none;
+    font-size: larger;
+    font-weight: bolder;
+    text-align: center;
+}
+#RestrictedIndustry {
+    display: none;
+    font-size: larger;
+    font-weight: bolder;
+    text-align: center;
+}
 
 .button-27 {
     appearance: none;
