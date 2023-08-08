@@ -19,18 +19,19 @@
             <p style="font-weight:bold">Gold Level</p>
             <p id="goldMonthlyQuoteResult"></p>
             <p id="goldAnnualQuoteResult"></p>
-            <p>Description: goes here </p>
+            <p>Description</p>
+            <button id="GOLDOpenDesc" onclick="viewDesc('GOLD')" class="button-27" role="button">Expand</button>
             <button id="GOLDSelect" onclick="GOLDSelectButton()" class="button-27" role="button">Select</button>
             <button id="GOLDConfirm" onclick="Confirm('GOLD')" class="button-27" role="button">Confirm</button>
             <button id="GOLDEdit" onclick="Edit()" class="button-27" role="button">Edit</button>
-
         </div>
 
         <div id="SILVER">
             <p style="font-weight:bold">Silver Level</p>
             <p id="silverMonthlyQuoteResult"></p>
             <p id="silverAnnualQuoteResult"></p>
-            <p>Description: goes here </p>
+            <p>Description</p>
+            <button id="SILVEROpenDesc" onclick="viewDesc('SILVER')" class="button-27" role="button">Expand</button>
             <button id="SILVERSelect" onclick="SILVERSelectButton()" class="button-27" role="button">Select</button>
             <button id="SILVERConfirm" onclick="Confirm('SILVER')" class="button-27" role="button">Confirm</button>
             <button id="SILVEREdit" onclick="Edit()" class="button-27" role="button">Edit</button>
@@ -40,14 +41,113 @@
             <p style="font-weight:bold">Bronze Level</p>
             <p id="bronzeMonthlyQuoteResult"></p>
             <p id="bronzeAnnualQuoteResult"></p>
-            <p>Description: goes here </p>
+            <p>Description</p>
+            <button id="BRONZEOpenDesc" onclick="viewDesc('BRONZE')" class="button-27" role="button">Expand</button>
             <button id="BRONZESelect" onclick="BRONZESelectButton()" class="button-27" role="button">Select</button>
             <button id="BRONZEConfirm" onclick="Confirm('BRONZE')" class="button-27" role="button">Confirm</button>
             <button id="BRONZEEdit" onclick="Edit()" class="button-27" role="button">Edit</button>
         </div>
 
-        <p id="ExtraHelp">Not satisfied with the quotes? Contact us on xxxxxxx</p>
+        <p id="ExtraHelp">Not satisfied with the quotes? Contact us on 02920 853788</p>
 
+    </div>
+
+    <div id="DescriptionContainer">
+        <p id="GOLDDesc">
+            •	<b>Health and Safety Review</b> <br>
+            &emsp;A Thomas Carroll health and safety consultant will visit your premises (normally your main location) and undertake a Health and Safety Review of your existing health and safety arrangements.<br>
+            &emsp;The main purpose of the review is to discover ‘where you are now’, as well as establishing a benchmark against which future progress can be measured.<br>
+            •	<b>Prioritised Action Plan</b> <br>
+            &emsp;On completion of the review, Thomas Carroll will provide you with a report that will identify both the strengths and weaknesses of your existing health and safety management systems, together with a prioritised action plan to help facilitate continuous improvement.<br>
+            •	<b>Expert Telephone and Email Advice and Support* </b><br>
+            &emsp;Whenever you need advice or guidance with any health and safety issue, simply pick up the phone or EMail us.<br>
+            •	<b>Regular e-Risk Bulletins</b><br>
+            &emsp;Stay up to date with new and upcoming changes in legislation and on topical health and safety issues.<br>
+            •	<b>Accident Investigation and Crisis Support</b><br>
+            &emsp;Should you be unfortunate to you have an accident, dangerous occurrence or any incident involv-ing the enforcing authorities, Thomas Carroll will guide and support you through the process.<br>
+            •	 <b>Online Health and Safety Management System</b><br>
+            &emsp;To help you manage health and safety effectively and efficiently, Thomas Carroll will provide an on-line Health and Safety Management System, that includes:<br>
+            &emsp;&emsp;•	    a statement of the company’s commitment to health and safety<br>
+            &emsp;&emsp;•	    details of organisational responsibilities for implementing health and safety<br>
+            &emsp;&emsp;•	    arrangements for health and safety<br>
+            &emsp;&emsp;•	    risk assessment toolkit<br>
+            &emsp;&emsp;•	    incident manager<br>
+            &emsp;&emsp;•	    safe systems of work<br>
+            &emsp;&emsp;•	    information library<br>
+            &emsp;&emsp;•	    employee safety handbook<br>
+            &emsp;&emsp;•	    training manager<br>
+            &emsp;&emsp;•	    task manager<br>
+            &emsp;&emsp;•	    monitoring checklists<br>
+            &emsp;Our cloud-based portal will provide you with a structured framework and the tools you will require to manage a safe and healthy workplace.<br>
+            •	<b>Safety for Directors and Senior Executives Training Course</b><br>
+            &emsp;Thomas Carroll will provide, a delegate place, for senior management on a ‘Safety for Directors and Senior Executives’ training course, which is designed to enable delegates to appreciate the importance of strategic safety management and the consequences of failing to manage health and safety effectively.<br>
+            •	<b>IOSH Managing Safely Training Course</b><br>
+            &emsp;Thomas Carroll will provide, a delegate place, on an Institution of Occupational Safety and Health accredited ‘Managing Safely’ training course, which is designed to enable delegates to understand their responsibilities for health and safety and to administer these activities in accordance with the safety policy of the organisation and health and safety legislation.<br>
+            &emsp;Principles of Risk Assessment Training Course<br>
+            &emsp;Thomas Carroll will provide an in-house risk assessment training course, to designated individuals, which is designed to enable delegates to understand the theory and practice of risk assessment.<br>
+            •	<b>Health and Safety Consultancy Support Visit</b><br>
+            &emsp;Thomas Carroll will provide one-day consultancy support, in order to assist with any health and safety issue.<br>
+
+            &emsp;* subject to a fair usage policy<br>
+
+        </p>
+
+        <p id="SILVERDesc">
+            •	<b>Health and Safety Review</b><br>
+            &emsp;A Thomas Carroll health and safety consultant will visit your premises (normally your main location) and undertake a Health and Safety Review of your existing health and safety arrangements.<br>
+            &emsp;The main purpose of the review is to discover ‘where you are now’, as well as establishing a benchmark against which future progress can be measured.<br>
+
+            •	<b>Prioritised Action Plan</b><br>
+            &emsp;On completion of the review, Thomas Carroll will provide you with a report that will identify both the strengths and weaknesses of your existing health and safety management systems, together with a prioritised action plan to help facilitate continuous improvement.<br>
+
+            •	<b>Expert Telephone and Email Advice and Support*</b><br>
+            &emsp;Whenever you need advice or guidance with any health and safety issue, simply pick up the phone or EMail us.<br>
+
+            •	<b>Regular e-Risk Bulletins</b><br>
+            &emsp;Stay up to date with new and upcoming changes in legislation and on topical health and safety issues.<br>
+
+            •	<b>Accident Investigation and Crisis Support</b><br>
+            &emsp;Should you be unfortunate to you have an accident, dangerous occurrence or any incident involv-ing the enforcing authorities, Thomas Carroll will guide and support you through the process.<br>
+
+            •	<b>On-line Health and Safety Management System </b><br>
+            &emsp;To help you manage health and safety effectively and efficiently, Thomas Carroll will provide an on-line Health and Safety Management System, that includes:<br>
+
+            &emsp;&emsp;•	a statement of the company’s commitment to health and safety<br>
+            &emsp;&emsp;•	details of organisational responsibilities for implementing health and safety<br>
+            &emsp;&emsp;•	arrangements for health and safety<br>
+            &emsp;&emsp;•	risk assessment toolkit<br>
+            &emsp;&emsp;•	incident manager<br>
+            &emsp;&emsp;•	safe systems of work<br>
+            &emsp;&emsp;•	information library<br>
+            &emsp;&emsp;•	employee safety handbook<br>
+            &emsp;&emsp;•	training manager<br>
+            &emsp;&emsp;•	task manager<br>
+            &emsp;&emsp;•	monitoring checklists<br>
+
+            &emsp;Our cloud-based portal will provide you with a structured framework and the tools you will require to manage a safe and healthy workplace.<br>
+
+        </p>
+
+        <p id="BRONZEDesc">
+            •	<b>Health and Safety Review</b><br>
+            &emsp;A Thomas Carroll health and safety consultant will visit your premises (normally your main location) and undertake a Health and Safety Review of your existing health and safety arrangements.<br>
+            &emsp;The main purpose of the review is to discover ‘where you are now’, as well as establishing a benchmark against which future progress can be measured.<br>
+
+            •	<b>Prioritised Action Plan</b><br>
+            &emsp;On completion of the review, Thomas Carroll will provide you with a report that will identify both the strengths and weaknesses of your existing health and safety management systems, together with a prioritised action plan to help facilitate continuous improvement.<br>
+
+            •	<b>Expert Telephone and Email Advice and Support*</b><br>
+            &emsp;Whenever you need advice or guidance with any health and safety issue, simply pick up the phone or EMail us.<br>
+
+            •	<b>Regular e-Risk Bulletins</b><br>
+            &emsp;Stay up to date with new and upcoming changes in legislation and on topical health and safety issues.<br>
+
+            •	<b>Accident Investigation and Crisis Support</b><br>
+            &emsp;Should you be unfortunate to you have an accident, dangerous occurrence or any incident involv-ing the enforcing authorities, Thomas Carroll will guide and support you through the process.<br>
+
+        </p>
+
+        <button id="CloseDesc" onclick="CloseDesc()" class="button-27" role="button">EXIT</button>
     </div>
 
     <div id="ConfirmationPage">
@@ -63,9 +163,10 @@
     <button id="EXIT" onclick="Exit()" class="button-27" role="button">Exit</button>
 
 
-    <p id="AltQuoteResults">Contact us on xxxxxx to get support.<p>
-    <p id="RestrictedPostcode">Sorry we do not serve your area, Contact us on xxxxxx to get alternative support.</p>
-    <p id="RestrictedIndustry">Sorry we do not serve your Industry, Contact us on xxxxxx to get alternative support.</p>
+    <p id="AltQuoteResults">Contact us on 02920 853788 to get support.<p>
+    <p id="RestrictedPostcode">Sorry we do not serve your area, Contact us on 02920 853788 to get alternative support.</p>
+    <p id="RestrictedIndustry">Sorry we do not serve your Industry, Contact us on 02920 853788 to get alternative support.</p>
+    <p id="InvalidPostcode">Please enter a valid post code. For example: (AB12 C34)</p>
 
     <script src="public\script.js"></script>
 

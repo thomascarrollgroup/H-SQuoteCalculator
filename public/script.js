@@ -1,3 +1,23 @@
+function viewDesc(level) {
+    document.getElementById('DescriptionContainer').style.display = 'block';
+
+    document.getElementById('GOLDDesc').style.display = 'none';
+    document.getElementById('SILVERDesc').style.display = 'none';
+    document.getElementById('BRONZEDesc').style.display = 'none';
+
+    if (level == 'GOLD') {
+        document.getElementById('GOLDDesc').style.display = 'block';
+    } else if (level == 'SILVER') {
+        document.getElementById('SILVERDesc').style.display = 'block';
+    } else if (level == 'BRONZE') {
+        document.getElementById('BRONZEDesc').style.display = 'block';
+    }
+}
+
+function CloseDesc() {
+    document.getElementById('DescriptionContainer').style.display = 'none';
+}
+
 
 function scrollToElement(elementId) {
     const element = document.getElementById(elementId);
@@ -46,23 +66,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
 function validatePostcodeAndCalculateQuote() {
     const postcodeInput = document.getElementById("companyPostcode").value.trim().toUpperCase();
     const companyTypeInput = document.getElementById("companyType").value.trim().toLowerCase();
-
     const isCompanyTypeRestricted = restrictedCompanyTypes.includes(companyTypeInput);
-    const isPostcodeRestricted = restrictedPostcodes.includes(postcodeInput);
+    const isValidPostcode1 = /^([A-Z]{1,2}\d{1,2}[A-Z]?)\s*(\d[A-Z]{2})$/.test(postcodeInput);
+    const isValidPostcode = /^(CF|NP|SA|HR|LD|GL|BS)\d/.test(postcodeInput);
 
-    // If both company type and postcode are restricted
-    if (isCompanyTypeRestricted && isPostcodeRestricted) {
+    if (isCompanyTypeRestricted && (!isValidPostcode || !isValidPostcode1)) {
         document.getElementById("RestrictedPostcode").style.display = "block";
         document.getElementById("RestrictedIndustry").style.display = "block";
         document.getElementById("QuoteResults").style.display = "none";
         return;
     }
 
-    // If only company type is restricted
     if (isCompanyTypeRestricted) {
         document.getElementById("RestrictedIndustry").style.display = "block";
         document.getElementById("QuoteResults").style.display = "none";
@@ -70,27 +87,30 @@ function validatePostcodeAndCalculateQuote() {
         document.getElementById("RestrictedIndustry").style.display = "none";
     }
 
-    // If only postcode is restricted
-    if (isPostcodeRestricted) {
+    if (!isValidPostcode1) {
+        document.getElementById("InvalidPostcode").style.display = "block";
         document.getElementById("QuoteResults").style.display = "none";
-        document.getElementById("RestrictedPostcode").style.display = "block";
+
     } else {
+        document.getElementById("InvalidPostcode").style.display = "none";
+    }
+
+    if (!isValidPostcode && !isValidPostcode1) {
+        document.getElementById("RestrictedPostcode").style.display = "none";
+        document.getElementById("QuoteResults").style.display = "none";
+    } else {
+        document.getElementById("RestrictedPostcode").style.display = "block";
+    }
+
+    if (isValidPostcode) {
         document.getElementById("RestrictedPostcode").style.display = "none";
     }
 
-    // Check if the entered postcode is valid
-    const isValidPostcode = /^([A-Z]{1,2}\d{1,2}[A-Z]?)\s*(\d[A-Z]{2})$/.test(postcodeInput);
-    if (!isValidPostcode) {
-        document.getElementById("QuoteResults").style.display = "none";
-        alert('Please enter a valid post code. For example: (AB12 C34)');
-        return;
-    }
-
-    // If both company type and postcode are valid
-    if (!isCompanyTypeRestricted && !isPostcodeRestricted) {
+    if (!isCompanyTypeRestricted && isValidPostcode && isValidPostcode1) {
         calculateQuote();
     }
 }
+
 
 var goldMonthlyQuote;
 var silverMonthlyQuote;
@@ -194,6 +214,11 @@ function GOLDSelectButton() {
     document.getElementById("BRONZE").style.backgroundColor = "white";
     document.getElementById("BRONZE").style.color = "black";
 
+    document.getElementById("GOLDOpenDesc").style.display = "none";
+    document.getElementById("SILVEROpenDesc").style.display = "block";
+    document.getElementById("BRONZEOpenDesc").style.display = "block";
+
+
 
 }
 function SILVERSelectButton() {
@@ -219,6 +244,9 @@ function SILVERSelectButton() {
     document.getElementById("BRONZE").style.backgroundColor = "white";
     document.getElementById("BRONZE").style.color = "black";
 
+    document.getElementById("GOLDOpenDesc").style.display = "block";
+    document.getElementById("SILVEROpenDesc").style.display = "none";
+    document.getElementById("BRONZEOpenDesc").style.display = "block";
 }
 function BRONZESelectButton() {
     document.getElementById("BRONZEConfirm").style.display = "block";
@@ -242,10 +270,17 @@ function BRONZESelectButton() {
     document.getElementById("GOLD").style.backgroundColor = "white";
     document.getElementById("GOLD").style.color = "black";
 
+    document.getElementById("GOLDOpenDesc").style.display = "block";
+    document.getElementById("SILVEROpenDesc").style.display = "block";
+    document.getElementById("BRONZEOpenDesc").style.display = "none";
 }
 
 function Edit() {
     document.getElementById("CalculateQuote").style.display = "block";
+
+    document.getElementById("GOLDOpenDesc").style.display = "block";
+    document.getElementById("SILVEROpenDesc").style.display = "block";
+    document.getElementById("BRONZEOpenDesc").style.display = "block";
 
     document.getElementById("BRONZEConfirm").style.display = "none";
     document.getElementById("SILVERConfirm").style.display = "none";
@@ -301,8 +336,7 @@ function Exit() {
 }
 
 
-const restrictedPostcodes = ["CF23 2TR"]; //  add here
-const restrictedCompanyTypes = ["accountancy", "abattoir"]; // add here
+const restrictedCompanyTypes = ["construction industry", "construction plant machinery installation, service & repair", "construction project manager", "construction skills training"]; // add here
 
 
 // edit or add here
