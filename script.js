@@ -55,16 +55,38 @@ function scrollToElement(elementId) {
 function generatePDF() {
     const content = document.getElementById('QuoteResults');
 
-    // Clone the content to manipulate without affecting the original DOM
     const contentClone = content.cloneNode(true);
 
-    // Hide elements with the "hidden-element" class
+    const elementsToStyle = contentClone.querySelectorAll('.Gelement-to-style, .Selement-to-style, .Belement-to-style');
+    elementsToStyle.forEach(element => {
+        element.style.color = 'black';
+        element.style.width = '100px';
+        element.style.height = '220px';
+        element.style.display = 'inline-block'; 
+        element.style.verticalAlign = 'top'; 
+        element.style.marginRight = '10px'; 
+    });
+
+    const GelementsToStyle = contentClone.querySelectorAll('.Gelement-to-style');
+    GelementsToStyle.forEach(element => {
+        element.style.border = '5px solid gold';
+
+    });
+    const SelementsToStyle = contentClone.querySelectorAll('.Selement-to-style');
+    SelementsToStyle.forEach(element => {
+        element.style.border = '5px solid silver';
+    });
+    const BelementsToStyle = contentClone.querySelectorAll('.Belement-to-style');
+    BelementsToStyle.forEach(element => {
+        element.style.border = '5px solid #CD7F32';
+
+    });
+
     const hiddenElements = contentClone.querySelectorAll('.hidden-element');
     hiddenElements.forEach(element => {
         element.style.display = 'none';
-    }); // <-- Added closing parenthesis here
+    }); 
 
-    // Convert the manipulated content to PDF
     html2pdf().from(contentClone).save('converted.pdf');
 }
 
