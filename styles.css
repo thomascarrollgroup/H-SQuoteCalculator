@@ -1,4 +1,4 @@
-﻿﻿ /* Updated CSS with changes for scrollable content */
+﻿ /* Updated CSS with changes for scrollable content */
 *{
     font-family: Arial;
 }
@@ -14,10 +14,17 @@ h1 {
     text-align: center;
 }
 
-#GOLDConfirm, #SILVERConfirm, #BRONZEConfirm, #GOLDEdit, #SILVEREdit, #BRONZEEdit{
-    display: none;
-    margin: 0 auto;
+#EditAndPDF {
+    width:100%;
 }
+
+#Edit {
+    display: inline-block; 
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 5px;
+}
+
 
 #DescriptionContainer {
     position: absolute;
@@ -27,10 +34,6 @@ h1 {
     background-color: #d8232a;
     left: 80px;
     display:none;
-}
-
-#GOLDSelect, #SILVERSelect, #BRONZESelect, #GOLDOpenDesc, #SILVEROpenDesc, #BRONZEOpenDesc  {
-    margin: 0 auto;
 }
 
 #GOLDDesc, #SILVERDesc, #BRONZEDesc{
@@ -70,7 +73,7 @@ h1 {
 #GOLD, #SILVER, #BRONZE {
     display: inline-block;
     padding: 10px;
-    height: 350px;
+    height: 200px;
     width: 300px;
     font-size: 18px;
     cursor: pointer;
@@ -88,13 +91,21 @@ h1 {
     margin-left: 8%;
 }
 
-    #GOLD:hover,
-    #SILVER:hover,
-    #BRONZE:hover {
-        background: #d8232a;
-        color: white;
-        box-shadow: 10px 5px 10px gray;
-    }
+#GOLD:hover {
+    background: #FFD700;
+    color: black;
+    box-shadow: 10px 5px 10px gray;
+}
+#SILVER:hover{
+    background: silver;
+    color: black;
+    box-shadow: 10px 5px 10px gray;
+}
+#BRONZE:hover {
+    background: #CD7F32;
+    color: white;
+    box-shadow: 10px 5px 10px gray;
+}
 
 #ExtraHelp {
     font-weight: bold;
