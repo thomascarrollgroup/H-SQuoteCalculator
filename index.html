@@ -14,6 +14,7 @@
     <input type="number" id="numEmployees" placeholder="Enter number of employees">
     <button id="CalculateQuote" onclick="validatePostcodeAndCalculateQuote()" class="button-27" role="button">Calculate Quote</button>
 
+
     <div id="QuoteResults">
         <div id="BRONZE" class="Belement-to-style">
             <p style="font-weight:bold">Bronze Level</p>
@@ -21,9 +22,6 @@
             <p id="bronzeAnnualQuoteResult"></p>
             <div class="hidden-element">
                 <button id="BRONZEOpenDesc" onclick="viewDesc('BRONZE')" class="button-27" role="button">Expand Description</button>
-                <button id="BRONZESelect" onclick="BRONZESelectButton()" class="button-27" role="button">Select</button>
-                <button id="BRONZEConfirm" onclick="Confirm('BRONZE')" class="button-27" role="button">Confirm</button>
-                <button id="BRONZEEdit" onclick="Edit()" class="button-27" role="button">Edit</button>
             </div>
         </div>
 
@@ -33,9 +31,6 @@
             <p id="silverAnnualQuoteResult"></p>
             <div class="hidden-element">
                 <button id="SILVEROpenDesc" onclick="viewDesc('SILVER')" class="button-27" role="button">Expand Description</button>
-                <button id="SILVERSelect" onclick="SILVERSelectButton()" class="button-27" role="button">Select</button>
-                <button id="SILVERConfirm" onclick="Confirm('SILVER')" class="button-27" role="button">Confirm</button>
-                <button id="SILVEREdit" onclick="Edit()" class="button-27" role="button">Edit</button>
             </div>
         </div>
 
@@ -45,13 +40,11 @@
             <p id="goldAnnualQuoteResult"></p>
             <div class="hidden-element">
                 <button id="GOLDOpenDesc" onclick="viewDesc('GOLD')" class="button-27" role="button">Expand Description</button>
-                <button id="GOLDSelect" onclick="GOLDSelectButton()" class="button-27" role="button">Select</button>
-                <button id="GOLDConfirm" onclick="Confirm('GOLD')" class="button-27" role="button">Confirm</button>
-                <button id="GOLDEdit" onclick="Edit()" class="button-27" role="button">Edit</button>
             </div>
         </div>
 
-        <div class="hidden-element">
+        <div id="EditAndPDF" class="hidden-element">
+            <button id="Edit" onclick="Edit()" class="button-27" role="button">Edit</button>
             <button id="GeneratePDF" onclick="generatePDF()" class="button-27" role="button">Generate PDF</button>
         </div>
         <p id="ExtraHelp">Not satisfied with the quotes? Contact us on 02920 853788</p>
