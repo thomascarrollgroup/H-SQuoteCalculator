@@ -87,7 +87,24 @@ function generatePDF() {
         element.style.display = 'none';
     }); 
 
-    html2pdf().from(contentClone).save('converted.pdf');
+    const companyName = document.getElementById('companyName').value;
+    const companyPostcode = document.getElementById('companyPostcode').value;
+    const companyType = document.getElementById('companyType').value;
+    const numEmployees = document.getElementById('numEmployees').value;
+
+    const companyInfoElement = document.createElement('div');
+    companyInfoElement.innerHTML = `
+        <p><b><font size="+2"><u>Summary</u></font></b></p>
+        <p><b>Company Name:</b> ${companyName}</p>
+        <p><b>Company Postcode:</b> ${companyPostcode}</p>
+        <p><b>Company's Trade Type:</b> ${companyType}</p>
+        <p><b>Number of Employees:</b> ${numEmployees}</p></br></br>
+    `;
+
+    contentClone.insertBefore(companyInfoElement, contentClone.firstChild);
+
+
+    html2pdf().from(contentClone).save('Quotes.pdf');
 }
 
 
@@ -184,6 +201,7 @@ var silverAnnualQuote;
 var bronzeAnnualQuote;
 
 function calculateQuote() {
+    document.getElementById('Edit').style.display = 'block';
     var companyName = document.getElementById("companyName").value;
     var companyPostcode = document.getElementById("companyPostcode").value;
     var companyType = document.getElementById("companyType").value;
@@ -248,152 +266,20 @@ function calculateQuote() {
     document.getElementById("silverAnnualQuoteResult").innerText = "Annual Quote: " + silverAnnualQuote;
     document.getElementById("bronzeMonthlyQuoteResult").innerText = "Monthly Quote: " + bronzeMonthlyQuote;
     document.getElementById("bronzeAnnualQuoteResult").innerText = "Annual Quote: " + bronzeAnnualQuote;
-
-
-
-}
-
-
-
-function GOLDSelectButton() {
-    document.getElementById("GOLDConfirm").style.display = "block";
-    document.getElementById("SILVERConfirm").style.display = "none";
-    document.getElementById("BRONZEConfirm").style.display = "none";
-
-    document.getElementById("GOLDSelect").style.display = "none";
-    document.getElementById("SILVERSelect").style.display = "block";
-    document.getElementById("BRONZESelect").style.display = "block";
-
-    document.getElementById("GOLDEdit").style.display = "block";
-    document.getElementById("SILVEREdit").style.display = "none";
-    document.getElementById("BRONZEEdit").style.display = "none";
-
-    document.getElementById("CalculateQuote").style.display = "none";
-
-    document.getElementById("GOLD").style.backgroundColor = "#d8232a";
-    document.getElementById("GOLD").style.color = "white";
-    document.getElementById("SILVER").style.backgroundColor = "white";
-    document.getElementById("SILVER").style.color = "black";
-    document.getElementById("BRONZE").style.backgroundColor = "white";
-    document.getElementById("BRONZE").style.color = "black";
-
-    document.getElementById("GOLDOpenDesc").style.display = "none";
-    document.getElementById("SILVEROpenDesc").style.display = "block";
-    document.getElementById("BRONZEOpenDesc").style.display = "block";
-
-
-
-}
-function SILVERSelectButton() {
-
-    document.getElementById("SILVERConfirm").style.display = "block";
-    document.getElementById("GOLDConfirm").style.display = "none";
-    document.getElementById("BRONZEConfirm").style.display = "none";
-
-    document.getElementById("SILVERSelect").style.display = "none";
-    document.getElementById("GOLDSelect").style.display = "block";
-    document.getElementById("BRONZESelect").style.display = "block";
-
-    document.getElementById("GOLDEdit").style.display = "none";
-    document.getElementById("SILVEREdit").style.display = "block";
-    document.getElementById("BRONZEEdit").style.display = "none";
-
-    document.getElementById("CalculateQuote").style.display = "none";
-
-    document.getElementById("SILVER").style.backgroundColor = "#d8232a";
-    document.getElementById("SILVER").style.color = "white";
-    document.getElementById("GOLD").style.backgroundColor = "white";
-    document.getElementById("GOLD").style.color = "black";
-    document.getElementById("BRONZE").style.backgroundColor = "white";
-    document.getElementById("BRONZE").style.color = "black";
-
-    document.getElementById("GOLDOpenDesc").style.display = "block";
-    document.getElementById("SILVEROpenDesc").style.display = "none";
-    document.getElementById("BRONZEOpenDesc").style.display = "block";
-}
-function BRONZESelectButton() {
-    document.getElementById("BRONZEConfirm").style.display = "block";
-    document.getElementById("SILVERConfirm").style.display = "none";
-    document.getElementById("GOLDConfirm").style.display = "none";
-
-    document.getElementById("BRONZESelect").style.display = "none";
-    document.getElementById("GOLDSelect").style.display = "block";
-    document.getElementById("SILVERSelect").style.display = "block";
-
-    document.getElementById("GOLDEdit").style.display = "none";
-    document.getElementById("SILVEREdit").style.display = "none";
-    document.getElementById("BRONZEEdit").style.display = "block";
-
-    document.getElementById("CalculateQuote").style.display = "none";
-
-    document.getElementById("BRONZE").style.backgroundColor = "#d8232a";
-    document.getElementById("BRONZE").style.color = "white";
-    document.getElementById("SILVER").style.backgroundColor = "white";
-    document.getElementById("SILVER").style.color = "black";
-    document.getElementById("GOLD").style.backgroundColor = "white";
-    document.getElementById("GOLD").style.color = "black";
-
-    document.getElementById("GOLDOpenDesc").style.display = "block";
-    document.getElementById("SILVEROpenDesc").style.display = "block";
-    document.getElementById("BRONZEOpenDesc").style.display = "none";
 }
 
 function Edit() {
     document.getElementById("CalculateQuote").style.display = "block";
 
-    document.getElementById("GOLDOpenDesc").style.display = "block";
-    document.getElementById("SILVEROpenDesc").style.display = "block";
-    document.getElementById("BRONZEOpenDesc").style.display = "block";
-
-    document.getElementById("BRONZEConfirm").style.display = "none";
-    document.getElementById("SILVERConfirm").style.display = "none";
-    document.getElementById("GOLDConfirm").style.display = "none";
-
-    document.getElementById("BRONZESelect").style.display = "block";
-    document.getElementById("GOLDSelect").style.display = "block";
-    document.getElementById("SILVERSelect").style.display = "block";
-
     document.getElementById("BRONZE").style.border = "none";
     document.getElementById("GOLD").style.border = "none";
     document.getElementById("SILVER").style.border = "none";
-
-    document.getElementById("GOLDEdit").style.display = "none";
-    document.getElementById("SILVEREdit").style.display = "none";
-    document.getElementById("BRONZEEdit").style.display = "none";
 
     scrollToElement("Heading");
 
 }
 
-function Confirm(service) {
-    document.getElementById("QuoteResults").style.display = "none";
-    document.getElementById("ConfirmationPage").style.display = "block";
-    document.getElementById("FcompanyName").innerText = "Company Name: " + document.getElementById("companyName").value;
-    document.getElementById("FcompanyPostcode").innerText = "Company Postcode: " + document.getElementById("companyPostcode").value;
-    document.getElementById("FcompanyType").innerText = "Company Type: " + document.getElementById("companyType").value;
-    document.getElementById("FnumEmployees").innerText = "Number of Employees: " + document.getElementById("numEmployees").value;
-    document.getElementById("ChosenService").innerText = "Chosen service level: " + service;
-    
-    document.getElementById("EXIT").style.display = "block";
 
-    document.getElementById("companyName").style.display = "none";
-    document.getElementById("companyPostcode").style.display = "none";
-    document.getElementById("companyType").style.display = "none";
-    document.getElementById("numEmployees").style.display = "none";
-    document.getElementById("CalculateQuote").style.display = "none";
-    if (service == 'GOLD') {
-        document.getElementById("MonthlyQuotes").innerText = "Monthly Quote:  " + goldMonthlyQuote;
-        document.getElementById("AnnualQuotes").innerText = "Annual Quote:  " + goldAnnualQuote;
-    }
-    else if (service == 'SILVER') {
-        document.getElementById("MonthlyQuotes").innerText = "Monthly Quote: " + silverMonthlyQuote;
-        document.getElementById("AnnualQuotes").innerText = "Annual Quote: " + silverAnnualQuote;
-    }
-    else if (service == 'BRONZE') {
-        document.getElementById("MonthlyQuotes").innerText = "Monthly Quote:  " + bronzeMonthlyQuote;
-        document.getElementById("AnnualQuotes").innerText = "Annual Quote:  " + bronzeAnnualQuote;
-    }
-}
 function Exit() {
     window.location.reload()
 }
