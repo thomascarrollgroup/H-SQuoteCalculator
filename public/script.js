@@ -1,3 +1,4 @@
+
 function viewDesc(level) {
     document.getElementById('DescriptionContainer').style.display = 'block';
 
@@ -12,11 +13,36 @@ function viewDesc(level) {
     } else if (level == 'BRONZE') {
         document.getElementById('BRONZEDesc').style.display = 'block';
     }
+    Desc(level);
 }
 
 function CloseDesc() {
     document.getElementById('DescriptionContainer').style.display = 'none';
 }
+
+function Desc(level) {
+    var fileURL;
+    if (level == 'GOLD') {
+        fileURL = '/GOLD.txt';
+    } else if (level == 'SILVER') {
+        fileURL = '/SILVER.txt';
+    } else if (level == 'BRONZE') {
+        fileURL = '/BRONZE.txt';
+    }
+    fetch(fileURL)
+        .then(response => response.text())
+        .then(text => {
+            var formattedText = text.replace(/\n/g, '<br>');
+            formattedText = formatText(formattedText);
+            document.getElementById(level + 'Desc').innerHTML = formattedText;
+        });
+}
+
+function formatText(text) {
+    var boldPattern = /\[(.*?)\]/g;
+    return text.replace(boldPattern, '<strong>$1</strong>');
+}
+
 
 
 function scrollToElement(elementId) {
@@ -24,6 +50,22 @@ function scrollToElement(elementId) {
     if (element) {
         element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
+}
+
+function generatePDF() {
+    const content = document.getElementById('QuoteResults');
+
+    // Clone the content to manipulate without affecting the original DOM
+    const contentClone = content.cloneNode(true);
+
+    // Hide elements with the "hidden-element" class
+    const hiddenElements = contentClone.querySelectorAll('.hidden-element');
+    hiddenElements.forEach(element => {
+        element.style.display = 'none';
+    }); // <-- Added closing parenthesis here
+
+    // Convert the manipulated content to PDF
+    html2pdf().from(contentClone).save('converted.pdf');
 }
 
 
@@ -120,13 +162,10 @@ var silverAnnualQuote;
 var bronzeAnnualQuote;
 
 function calculateQuote() {
-
     var companyName = document.getElementById("companyName").value;
     var companyPostcode = document.getElementById("companyPostcode").value;
     var companyType = document.getElementById("companyType").value;
     var numEmployees = parseInt(document.getElementById("numEmployees").value);
-
-
     if (!companyName || !companyPostcode || !companyType || isNaN(numEmployees) ) {
         alert("Please fill in all fields with valid information.");
 
@@ -191,6 +230,8 @@ function calculateQuote() {
 
 
 }
+
+
 
 function GOLDSelectButton() {
     document.getElementById("GOLDConfirm").style.display = "block";

@@ -1,0 +1,92 @@
+﻿﻿
+<!DOCTYPE html>
+<head>
+    <title>Health and Safety Quote Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1 id="Heading">
+        Health and Safety Quote Calculator
+    </h1>
+    <input type="text" id="companyName" placeholder="Enter company name">
+    <input type="text" id="companyPostcode" placeholder="Enter company postcode (eg. AB12 3CD)">
+    <input type="text" id="companyType" list="companyTypeOptions" placeholder="Enter Company's Trade type">
+    <input type="number" id="numEmployees" placeholder="Enter number of employees">
+    <button id="CalculateQuote" onclick="validatePostcodeAndCalculateQuote()" class="button-27" role="button">Calculate Quote</button>
+
+    <div id="QuoteResults">
+        <div id="BRONZE">
+            <p style="font-weight:bold">Bronze Level</p>
+            <p id="bronzeMonthlyQuoteResult"></p>
+            <p id="bronzeAnnualQuoteResult"></p>
+            <div class="hidden-element">
+                <button id="BRONZEOpenDesc" onclick="viewDesc('BRONZE')" class="button-27" role="button">Expand Description</button>
+                <button id="BRONZESelect" onclick="BRONZESelectButton()" class="button-27" role="button">Select</button>
+                <button id="BRONZEConfirm" onclick="Confirm('BRONZE')" class="button-27" role="button">Confirm</button>
+                <button id="BRONZEEdit" onclick="Edit()" class="button-27" role="button">Edit</button>
+            </div>
+        </div>
+
+        <div id="SILVER">
+            <p style="font-weight:bold">Silver Level</p>
+            <p id="silverMonthlyQuoteResult"></p>
+            <p id="silverAnnualQuoteResult"></p>
+            <div class="hidden-element">
+                <button id="SILVEROpenDesc" onclick="viewDesc('SILVER')" class="button-27" role="button">Expand Description</button>
+                <button id="SILVERSelect" onclick="SILVERSelectButton()" class="button-27" role="button">Select</button>
+                <button id="SILVERConfirm" onclick="Confirm('SILVER')" class="button-27" role="button">Confirm</button>
+                <button id="SILVEREdit" onclick="Edit()" class="button-27" role="button">Edit</button>
+            </div>
+        </div>
+
+        <div id="GOLD">
+            <p style="font-weight:bold">Gold Level</p>
+            <p id="goldMonthlyQuoteResult"></p>
+            <p id="goldAnnualQuoteResult"></p>
+            <div class="hidden-element">
+                <button id="GOLDOpenDesc" onclick="viewDesc('GOLD')" class="button-27" role="button">Expand Description</button>
+                <button id="GOLDSelect" onclick="GOLDSelectButton()" class="button-27" role="button">Select</button>
+                <button id="GOLDConfirm" onclick="Confirm('GOLD')" class="button-27" role="button">Confirm</button>
+                <button id="GOLDEdit" onclick="Edit()" class="button-27" role="button">Edit</button>
+            </div>
+        </div>
+
+        <div class="hidden-element">
+            <button id="GeneratePDF" onclick="generatePDF()" class="button-27" role="button">Generate PDF</button>
+        </div>
+        <p id="ExtraHelp">Not satisfied with the quotes? Contact us on 02920 853788</p>
+
+    </div>
+
+            <div id="DescriptionContainer">
+                <p id="GOLDDesc"></p>
+
+                <div id="SILVERDesc"></div>
+
+                <div id="BRONZEDesc"></div>
+
+                <button id="CloseDesc" onclick="CloseDesc()" class="button-27" role="button">EXIT</button>
+            </div>
+
+            <div id="ConfirmationPage">
+                <p> Please enter these details as an opportunity on Acturis. </p>
+                <p id="FcompanyName"></p>
+                <p id="FcompanyType"></p>
+                <p id="FcompanyPostcode"></p>
+                <p id="FnumEmployees"></p>
+                <p id="ChosenService"></p>
+                <p id="MonthlyQuotes"></p>
+                <p id="AnnualQuotes"></p>
+            </div>
+            <button id="EXIT" onclick="Exit()" class="button-27" role="button">Exit</button>
+
+
+            <p id="AltQuoteResults">Contact us on 02920 853788 to get support.<p>
+            <p id="RestrictedPostcode">Sorry we do not serve your area, Contact us on 02920 853788 to get alternative support.</p>
+            <p id="RestrictedIndustry">Sorry we do not serve your Industry, Contact us on 02920 853788 to get alternative support.</p>
+            <p id="InvalidPostcode">Please enter a valid post code. For example: (AB12 C34)</p>
+
+            <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.0/dist/html2pdf.bundle.min.js"></script>
+            <script src="script.js"></script>
+</body>
+</html>
