@@ -1,0 +1,44 @@
+{
+  "employeeRanges": [
+    {
+        "minEmployees": 1,
+        "maxEmployees": 75,
+        "goldMonthlyQuote": "294.44",
+        "goldAnnualQuote": "3249",
+        "silverMonthlyQuote": "137.30",
+        "silverAnnualQuote": "1515",
+        "bronzeMonthlyQuote": "67.97",
+        "bronzeAnnualQuote": "750"
+    },
+    {
+        "minEmployees": 76,
+        "maxEmployees": 150,
+        "goldMonthlyQuote": "345.64",
+        "goldAnnualQuote": "3814",
+        "silverMonthlyQuote": "193.03",
+        "silverAnnualQuote": "2130",
+        "bronzeMonthlyQuote": "95.16",
+        "bronzeAnnualQuote": "1050"
+    },
+    {
+        "minEmployees": 151,
+        "maxEmployees": 250,
+        "goldMonthlyQuote": "368.30",
+        "goldAnnualQuote": "4064",
+        "silverMonthlyQuote": "215.69",
+        "silverAnnualQuote": "2380",
+        "bronzeMonthlyQuote": "110.11",
+        "bronzeAnnualQuote": "1215"
+    },
+    {
+        "minEmployees": 251,
+        "maxEmployees": 500,
+        "goldMonthlyQuote": "423.58",
+        "goldAnnualQuote": "4674",
+        "silverMonthlyQuote": "270.97",
+        "silverAnnualQuote": "2990",
+        "bronzeMonthlyQuote": "126.88",
+        "bronzeAnnualQuote": "1400"
+    }
+  ]
+}

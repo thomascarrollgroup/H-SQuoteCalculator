@@ -1,4 +1,7 @@
 
+
+// HOST IT ON RENDER OR SOMETHING.
+
 function viewDesc(level) {
     document.getElementById('DescriptionContainer').style.display = 'block';
 
@@ -52,6 +55,14 @@ function scrollToElement(elementId) {
     }
 }
 
+document.getElementById('GeneratePDF').addEventListener('click', function () {
+    const pdfFilePath = 'H&S QG - Description Comp Table.pdf';
+    const link = document.createElement('a');
+    link.href = pdfFilePath;
+    link.download = 'Services-Comparison-Table.pdf';
+    link.click();
+});
+
 function generatePDF() {
     const content = document.getElementById('QuoteResults');
 
@@ -60,11 +71,12 @@ function generatePDF() {
     const elementsToStyle = contentClone.querySelectorAll('.Gelement-to-style, .Selement-to-style, .Belement-to-style');
     elementsToStyle.forEach(element => {
         element.style.color = 'black';
-        element.style.width = '100px';
-        element.style.height = '220px';
+        element.style.width = '150px';
+        element.style.height = '260px';
         element.style.display = 'inline-block'; 
         element.style.verticalAlign = 'top'; 
         element.style.marginRight = '10px'; 
+        element.style.fontFamily = 'Inter';
     });
 
     const GelementsToStyle = contentClone.querySelectorAll('.Gelement-to-style');
@@ -94,12 +106,18 @@ function generatePDF() {
 
     const companyInfoElement = document.createElement('div');
     companyInfoElement.innerHTML = `
-        <p><b><font size="+2"><u>Summary</u></font></b></p>
+        <img src="logo-red.jpg" alt="Company Logo" style="width: 40%;"></br></br></br>
         <p><b>Company Name:</b> ${companyName}</p>
         <p><b>Company Postcode:</b> ${companyPostcode}</p>
         <p><b>Company's Trade Type:</b> ${companyType}</p>
-        <p><b>Number of Employees:</b> ${numEmployees}</p></br></br>
+        <p><b>Number of Employees:</b> ${numEmployees}</p></br>
+        <p class="summary-heading"><b><span class="summ-head">Your Health and Safety services </span>Quotes:</b></p>
     `;
+
+    companyInfoElement.style.marginBottom = '10px'; 
+    companyInfoElement.style.marginTop = '-100px'; 
+    companyInfoElement.style.marginLeft = '50px';
+    companyInfoElement.style.textAlign = 'left';
 
     contentClone.insertBefore(companyInfoElement, contentClone.firstChild);
 
@@ -200,6 +218,18 @@ var goldAnnualQuote;
 var silverAnnualQuote;
 var bronzeAnnualQuote;
 
+function loadJSON(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.overrideMimeType("application/json");
+    xhr.open('GET', url, true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            callback(xhr.responseText);
+        }
+    };
+    xhr.send(null);
+}
+
 function calculateQuote() {
     document.getElementById('Edit').style.display = 'block';
     var companyName = document.getElementById("companyName").value;
@@ -219,53 +249,31 @@ function calculateQuote() {
     }
 
 
-    if (numEmployees > 0 && numEmployees <= 75) {
-        goldMonthlyQuote = '\u00A3' + "294.44";
-        goldAnnualQuote = '\u00A3' + "3249";
-        silverMonthlyQuote = '\u00A3' + "137.30";
-        silverAnnualQuote = '\u00A3' + "1515";
-        bronzeMonthlyQuote = '\u00A3' + "67.97";
-        bronzeAnnualQuote = '\u00A3' + "750";
-        document.getElementById("AltQuoteResults").style.display = "none";
+    loadJSON('quotes.json', function (response) {
+        var data = JSON.parse(response);
 
-    } else if (numEmployees > 75 && numEmployees <= 150) {
-        goldMonthlyQuote = '\u00A3' + "345.64";
-        goldAnnualQuote = '\u00A3' + "3814";
-        silverMonthlyQuote = '\u00A3' + "193.03";
-        silverAnnualQuote = '\u00A3' + "2130";
-        bronzeMonthlyQuote = '\u00A3' + "95.16";
-        bronzeAnnualQuote = '\u00A3' + "1050";
-        document.getElementById("AltQuoteResults").style.display = "none";
+        for (var range of data.employeeRanges) {
+            if (numEmployees >= range.minEmployees && numEmployees <= range.maxEmployees) {
+                document.getElementById("QuoteResults").style.display = "block";
+                document.getElementById("ExtraHelp").style.display = "block";
+                scrollToElement("ExtraHelp");
+                document.body.style.overflow = "auto";
 
-    } else if (numEmployees > 150 && numEmployees <= 250) {
-        goldMonthlyQuote = '\u00A3' + "368.30";
-        goldAnnualQuote = '\u00A3' + "4064";
-        silverMonthlyQuote = '\u00A3' + "215.69";
-        silverAnnualQuote = '\u00A3' + "2380";
-        bronzeMonthlyQuote = '\u00A3' + "110.11";
-        bronzeAnnualQuote =  '\u00A3' + "1215";
-        document.getElementById("AltQuoteResults").style.display = "none";
+                document.getElementById("goldMonthlyQuoteResult").innerText = "Monthly Quote: " + "\u00A3" + range.goldMonthlyQuote;
+                document.getElementById("goldAnnualQuoteResult").innerText = "Annual Quote: " + "\u00A3" + range.goldAnnualQuote;
+                document.getElementById("silverMonthlyQuoteResult").innerText = "Monthly Quote: " + "\u00A3" + range.silverMonthlyQuote;
+                document.getElementById("silverAnnualQuoteResult").innerText = "Annual Quote: " + "\u00A3" + range.silverAnnualQuote;
+                document.getElementById("bronzeMonthlyQuoteResult").innerText = "Monthly Quote: " + "\u00A3" + range.bronzeMonthlyQuote;
+                document.getElementById("bronzeAnnualQuoteResult").innerText = "Annual Quote: " + "\u00A3" + range.bronzeAnnualQuote;
+                document.getElementById("AltQuoteResults").style.display = "none";
+                return;
+            }
+        }
 
-    } else if (numEmployees > 250 && numEmployees <= 500) {
-        goldMonthlyQuote = '\u00A3' + "423.58";
-        goldAnnualQuote = '\u00A3' + "4674";
-        silverMonthlyQuote = '\u00A3' + "270.97";
-        silverAnnualQuote = '\u00A3' + "2990";
-        bronzeMonthlyQuote = '\u00A3' + "126.88";
-        bronzeAnnualQuote = '\u00A3' + "1400";
-        document.getElementById("AltQuoteResults").style.display = "none";
-
-    } else if (numEmployees > 500) {
+        // If numEmployees exceeds the maximum value in the JSON data
         document.getElementById("QuoteResults").style.display = "none";
         document.getElementById("AltQuoteResults").style.display = "block";
-    }
-
-    document.getElementById("goldMonthlyQuoteResult").innerText = "Monthly Quote: " + goldMonthlyQuote;
-    document.getElementById("goldAnnualQuoteResult").innerText = "Annual Quote: " + goldAnnualQuote;
-    document.getElementById("silverMonthlyQuoteResult").innerText = "Monthly Quote: " + silverMonthlyQuote;
-    document.getElementById("silverAnnualQuoteResult").innerText = "Annual Quote: " + silverAnnualQuote;
-    document.getElementById("bronzeMonthlyQuoteResult").innerText = "Monthly Quote: " + bronzeMonthlyQuote;
-    document.getElementById("bronzeAnnualQuoteResult").innerText = "Annual Quote: " + bronzeAnnualQuote;
+    });
 }
 
 function Edit() {
@@ -275,7 +283,7 @@ function Edit() {
     document.getElementById("GOLD").style.border = "none";
     document.getElementById("SILVER").style.border = "none";
 
-    scrollToElement("Heading");
+    scrollToElement("Logo");
 
 }
 

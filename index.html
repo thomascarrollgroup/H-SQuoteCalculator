@@ -1,13 +1,20 @@
-﻿
+﻿﻿
 <!DOCTYPE html>
 <head>
     <title>Health and Safety Quote Calculator</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat">
 </head>
 <body>
+
+    <img id="Logo" src="logo-black.jpg" alt="Company Logo" class="logo-image">
+    <img src="wire-design-1.jpg" alt="Wire Desgin" class="wire-1">
+
     <h1 id="Heading">
-        Health and Safety Quote Calculator
+        Health and Safety <span class="quote-calculator">Quote Calculator</span>
     </h1>
+
     <input type="text" id="companyName" placeholder="Enter company name">
     <input type="text" id="companyPostcode" placeholder="Enter company postcode (eg. AB12 3CD)">
     <input type="text" id="companyType" list="companyTypeOptions" placeholder="Enter Company's Trade type">
@@ -17,7 +24,7 @@
 
     <div id="QuoteResults">
         <div id="BRONZE" class="Belement-to-style">
-            <p style="font-weight:bold">Bronze Level</p>
+            <p class="ServiceHead">Bronze</p>
             <p id="bronzeMonthlyQuoteResult"></p>
             <p id="bronzeAnnualQuoteResult"></p>
             <div class="hidden-element">
@@ -26,7 +33,7 @@
         </div>
 
         <div id="SILVER" class="Selement-to-style">
-            <p style="font-weight:bold">Silver Level</p>
+            <p class="ServiceHead">Silver</p>
             <p id="silverMonthlyQuoteResult"></p>
             <p id="silverAnnualQuoteResult"></p>
             <div class="hidden-element">
@@ -35,13 +42,14 @@
         </div>
 
         <div id="GOLD" class="Gelement-to-style">
-            <p style="font-weight:bold">Gold Level</p>
+            <p class="ServiceHead">Gold</p>
             <p id="goldMonthlyQuoteResult"></p>
             <p id="goldAnnualQuoteResult"></p>
             <div class="hidden-element">
                 <button id="GOLDOpenDesc" onclick="viewDesc('GOLD')" class="button-27" role="button">Expand Description</button>
             </div>
         </div>
+
 
         <div id="EditAndPDF" class="hidden-element">
             <button id="Edit" onclick="Edit()" class="button-27" role="button">Edit</button>
@@ -51,35 +59,35 @@
 
     </div>
 
-            <div id="DescriptionContainer">
-                <p id="GOLDDesc"></p>
+    <div id="DescriptionContainer">
+        <p id="GOLDDesc"></p>
 
-                <div id="SILVERDesc"></div>
+        <p id="SILVERDesc"></p>
 
-                <div id="BRONZEDesc"></div>
+        <p id="BRONZEDesc"></p>
 
-                <button id="CloseDesc" onclick="CloseDesc()" class="button-27" role="button">EXIT</button>
-            </div>
+        <button id="CloseDesc" onclick="CloseDesc()" class="button-27" role="button">EXIT</button>
+    </div>
 
-            <div id="ConfirmationPage">
-                <p> Please enter these details as an opportunity on Acturis. </p>
-                <p id="FcompanyName"></p>
-                <p id="FcompanyType"></p>
-                <p id="FcompanyPostcode"></p>
-                <p id="FnumEmployees"></p>
-                <p id="ChosenService"></p>
-                <p id="MonthlyQuotes"></p>
-                <p id="AnnualQuotes"></p>
-            </div>
-            <button id="EXIT" onclick="Exit()" class="button-27" role="button">Exit</button>
+    <div id="ConfirmationPage">
+        <p> Please enter these details as an opportunity on Acturis. </p>
+        <p id="FcompanyName"></p>
+        <p id="FcompanyType"></p>
+        <p id="FcompanyPostcode"></p>
+        <p id="FnumEmployees"></p>
+        <p id="ChosenService"></p>
+        <p id="MonthlyQuotes"></p>
+        <p id="AnnualQuotes"></p>
+    </div>
+    <button id="EXIT" onclick="Exit()" class="button-27" role="button">Exit</button>
 
 
-            <p id="AltQuoteResults">Contact us on 02920 853788 to get support.<p>
-            <p id="RestrictedPostcode">Sorry we do not serve your area, Contact us on 02920 853788 to get alternative support.</p>
-            <p id="RestrictedIndustry">Sorry we do not serve your Industry, Contact us on 02920 853788 to get alternative support.</p>
-            <p id="InvalidPostcode">Please enter a valid post code. For example: (AB12 C34)</p>
+    <p id="AltQuoteResults">Contact us on 02920 853788 to get support.<p>
+    <p id="RestrictedPostcode">Sorry we do not serve your area, Contact us on 02920 853788 to get alternative support.</p>
+    <p id="RestrictedIndustry">Sorry we do not serve your Industry, Contact us on 02920 853788 to get alternative support.</p>
+    <p id="InvalidPostcode">Please enter a valid post code. For example: (AB12 C34)</p>
 
-            <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.0/dist/html2pdf.bundle.min.js"></script>
-            <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.0/dist/html2pdf.bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
