@@ -1,4 +1,4 @@
-* {
+﻿* {
     font-family: Inter;
 }
 
@@ -201,7 +201,7 @@ h1 {
     }
 
 .summary-heading {
-    font-family: 'Caveat';
+    font-family: Caveat;
     font-size: 50px;
     margin-bottom: 2px;
     color: #ed452e;

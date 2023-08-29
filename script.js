@@ -1,7 +1,4 @@
 
-
-// HOST IT ON RENDER OR SOMETHING.
-
 function viewDesc(level) {
     document.getElementById('DescriptionContainer').style.display = 'block';
 
@@ -111,7 +108,7 @@ function generatePDF() {
         <p><b>Company Postcode:</b> ${companyPostcode}</p>
         <p><b>Company's Trade Type:</b> ${companyType}</p>
         <p><b>Number of Employees:</b> ${numEmployees}</p></br>
-        <p class="summary-heading"><b><span class="summ-head">Your Health and Safety services </span>Quotes:</b></p>
+        <p><b><span class="summ-head">Your Health and Safety services </span> <span class="summary-heading">Quotes:</span></b></p>
     `;
 
     companyInfoElement.style.marginBottom = '10px'; 
@@ -270,7 +267,6 @@ function calculateQuote() {
             }
         }
 
-        // If numEmployees exceeds the maximum value in the JSON data
         document.getElementById("QuoteResults").style.display = "none";
         document.getElementById("AltQuoteResults").style.display = "block";
     });
@@ -296,7 +292,6 @@ function Exit() {
 const restrictedCompanyTypes = ["construction industry", "construction plant machinery installation, service & repair", "construction project manager", "construction skills training"]; // add here
 
 
-// edit or add here
 const companyTypes = [
     "Abattoir",
     "Access Control & Door Entry System Installation, Service & Repair",
